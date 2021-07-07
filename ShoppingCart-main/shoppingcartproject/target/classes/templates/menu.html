@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Main Menu </title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container text-center">
+    <br>
+    <h1>Welcome to Main Menu </h1>
+    <br>
+
+
+    <h3><a th:href="@{/user}">USER DETAILS</a></h3>
+    <h3><a th:href="@{/productList}">PRODUCT DETAILS</a></h3>
+    <h3><a th:href="@{/cart/list}">CART</a></h3>
+    <br>
+    <div>
+        <form method="get" action="/logout">
+            <button type="submit" class="btn btn-primary btn-sm mb-3">LOGOUT</button>
+        </form>
+    </div>
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container text-center">
+    <div>
+
+        <hr>
+
+
+
+        <form th:action="@{/cart/save}" th:object="${cart}"
+              method="POST">
+            <div class="m-3">
+                <div class="form-group column">
+
+                    <div hidden >
+                        <select th:field="*{user}" class="form-control" required hidden>
+                            <tr th:each="us : ${user}">
+                                <option th:text="${us.firstName}" th:value="${us.id}" hidden/>
+                            </tr>
+                        </select>
+                    </div>
+
+
+                    <h3  >Choose the product you want to purchase </h3>
+                    <div>
+                        <select th:field="*{product}" class="form-control" multiple="multiple" required>
+                            <th:block th:each="pro : ${productList}">
+                                <option th:text="${pro.productName}" th:value="${pro.productId}"/>
+                            </th:block>
+                        </select>
+                    </div>
+
+
+
+                </div>
+                <p>Click on Ctrl to choose multiple product</p>
+            </div>
+
+
+            <div>
+                <button type="submit" class="btn btn-primary">ADD TO CART</button>
+            </div>
+
+        </form>
+    </div>
+
+</div>
+</div>
+</body>
+</html>

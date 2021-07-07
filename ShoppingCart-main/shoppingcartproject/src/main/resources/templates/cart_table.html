@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User Table</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+<br>
+<div align="right">
+    <div class="container text-right">
+        <form method="get" action="/logout">
+            <button type="submit" class="btn btn-primary btn-sm mb-3">LOGOUT</button>
+        </form>
+    </div>
+</div>
+
+
+<div class="container text-center">
+    <h1>Cart table </h1>
+
+    <div>
+
+        <table class="table table-striped table-bordered">
+            <thead class="thead-dark">
+            <tr>
+
+                <th>Cart ID</th>
+                <th>User</th>
+                <th>Product</th>
+                <th>Action</th>
+
+
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr th:each="cart: ${listCart}">
+                <td th:text="${cart.id}">Cart ID</td>
+                <td th:text="${cart.user?.firstName}"></td>
+                <td>
+                    <table class="table table-striped table-bordered" >
+
+                        <tr th:each="pro: ${cart.product}">
+                            <td th:text="${pro.productName}">id</td>
+
+                        </tr>
+                    </table>
+                </td>
+
+                <td><a th:href="@{/deleteCart/{id}(id=${cart.id})}">Remove</a></td>
+
+
+            </tr>
+            </tbody>
+
+        </table>
+        <div>
+            <form method="get" action="/cart/add">
+                <button type="submit" class="btn btn-primary btn-sm mb-3">ADD TO CART</button>
+            </form>
+        </div>
+
+        <a th:href="@{/menu}"> Back to menu</a>
+    </div>
+</div>
+
+
+</body>
+</html>
