@@ -43,6 +43,16 @@ public class User {
 
     @OneToOne
     private Cart cart;
+    @OneToOne
+    private AccountDetail account;
+
+    public AccountDetail getAccount() {
+        return account;
+    }
+
+    public void setAccount(AccountDetail account) {
+        this.account = account;
+    }
 
     public Cart getCart() {
         return cart;

@@ -74,6 +74,24 @@ public class CartController {
 
     }
 
+
+    @GetMapping("/showCartUpadteForm/{id}")
+    public String showCartUpadteForm(@PathVariable(value = "id") long id, Model model) {
+        Cart cart = cartRepositry.findById(id).get();
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        if (principal instanceof UserDetails) {
+            String username = ((UserDetails) principal).getUsername();
+            User user = userRepository.findByEmail(username);
+            model.addAttribute("user", user);
+        }
+        List<Product> product = productRepository.findAll();
+        model.addAttribute("product", product);
+        model.addAttribute("cart", cart);
+
+        return "cart_update";
+    }
+
     @GetMapping("/deleteCart/{id}")
     public String deleteCart(@PathVariable(value = "id") long id) {
 

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container text-center">
+    <div>
+<h2>Update account </h2>
+        <hr>
+
+
+        <form th:action="@{/accountSave}" th:object="${account}"
+              method="POST">
+
+            <div class="m-3">
+                <div class="container text-center">
+
+
+                    <input type="hidden" th:field="*{accountId}"/>
+
+
+                    <label>Account Number</label>
+
+                    <input type="text" th:field="*{accountNumber}" class="form-control"
+                           required minlength="6" maxlength="10"/>
+
+
+                    <label>Bank Name </label>
+
+                    <input type="text" th:field="*{bankName}" class="form-control"
+                           required minlength="1" maxlength="20"/>
+                    <label>Select User</label>
+                    <div>
+                        <select th:field="*{user}" class="form-control" required>
+                            <tr th:each="us : ${user}">
+                                <option th:text="${us.firstName}" th:value="${us.id}"/>
+                            </tr>
+                        </select>
+
+                    </div>
+
+                    <div>
+                        <button type="submit" class="btn btn-primary">ADD</button>
+                    </div>
+
+                </div>
+            </div>
+
+
+        </form>
+    </div>
+
+</div>
+</div>
+</body>
+</html>
